@@ -16,8 +16,12 @@
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
+    "next-sanity-image": "^6.0.0",
     "react": "18.2.0",
     "react-canvas-confetti": "^1.4.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.0",
+    "react-icons": "^4.8.0",
+    "stripe": "^11.17.0"
   }
 }
