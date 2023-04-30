@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
 
-function Navber() {
+import Link from "next/link";
+
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
+const Navber=()=> {
   return (
-    <div>Navber</div>
-  )
+    <div className="navbar-container">
+      <p className="logo">
+        <Link href="/">JSM HeadPhones</Link>
+      </p>
+
+      <button type="button" className="cart-icon" onClick="">
+        <AiOutlineShoppingCart />
+        <span className="cart-item-qty">1</span>
+      </button>
+    </div>
+  );
 }
 
-export default Navber
+export default Navber;
