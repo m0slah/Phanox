@@ -1,25 +1,35 @@
-import React from "react";
+import React from 'react';
 
-import HeroBanner from "Components/HeroBanner";
-import FooterBanner from "Components/FooterBanner";
+import { client } from '../../Lib/client';
+import { Product, FooterBanner, HeroBanner } from '../../Components';
+import product from 'sanity-ecommerce/schemas/product';
 
-function Home() {
-  return (
-    <React.Fragment>
-      <HeroBanner />
+const Home = ({ products, bannerData }) => (
+  <div>
+    <HeroBanner heroBanner={bannerData.length && bannerData[0]}  />
+    <div className="products-heading">
+      <h2>Best Seller Products</h2>
+      <p>speaker There are many variations passages</p>
+    </div>
 
-      <div className="products-heading">
-        <h2>Best Selling Product</h2>
-        <p>Speaking of many variations</p>
-      </div>
+    <div className="products-container">
+      {products?.map((product) => product.name)}
+    </div>
 
-      <div className="products-container">
-        {["product1", "product2"].map((product) => product)}
-      </div>
+    <FooterBanner footerBanner={bannerData && bannerData[0]} />
+  </div>
+);
 
-      <FooterBanner />
-    </React.Fragment>
-  );
+export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  const bannerQuery = '*[_type == "banner"]';
+  const bannerData = await client.fetch(bannerQuery);
+
+  return {
+    props: { products, bannerData }
+  }
 }
 
 export default Home;
