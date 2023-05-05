@@ -9,9 +9,7 @@ const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
 
   const handleBuyNow = () => {
-    onAdd(product, qty);
-
-    setShowCart(true);
+    
   }
 
   return (
