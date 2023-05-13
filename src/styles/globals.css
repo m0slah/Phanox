@@ -494,6 +494,11 @@ a {
   font-size: 20px;
 }
 
+.btn-container{
+  width: 400px;
+  margin: auto;
+}
+
 .btn {
   width: 100%;
   max-width: 400px;
