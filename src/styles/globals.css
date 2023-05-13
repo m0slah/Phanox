@@ -562,3 +562,16 @@ a {
   background: transparent;
   border: none;
 }
+
+.cart-bottom{
+  position: absolute;
+  bottom: 12px;
+  right: 5px;
+  width: 100%;
+  padding: 30px 65px;
+}
+
+.total{
+  display: flex;
+  justify-content: space-between;
+}
