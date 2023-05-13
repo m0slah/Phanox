@@ -16,8 +16,13 @@ import Link from "next/link";
 
 const Cart = () => {
   const cartRef = useRef(0);
-  const { totalPrice, totalQuantities, cartItems, setShowCart } =
-    useStateContext();
+  const {
+    totalPrice,
+    totalQuantities,
+    cartItems,
+    setShowCart,
+    toggleCartItemQuanitity,
+  } = useStateContext();
 
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -54,10 +59,23 @@ const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className="product" key={item._id}>
-                <img
-                  src={urlFor(item?.image[0])}
+                {/* <img  
+                  src={urlFor(item.image[0])}
                   className="cart-product-image"
-                />
+                /> */}
+                {item.image && item.image[0] ? (
+                  <img
+                    src={urlFor(item.image[0])}
+                    className="cart-product-image"
+                    alt={item.name}
+                  />
+                ) : (
+                  <img
+                    src="placeholder.jpg"
+                    className="cart-product-image"
+                    alt="Placeholder"
+                  />
+                )}
                 <div className="item-desc">
                   <div className="flex top">
                     <h5>{item.name}</h5>
@@ -70,7 +88,12 @@ const Cart = () => {
                           <AiOutlineMinus />
                         </span>
                         <span className="num">0</span>
-                        <span className="plus" onClick="">
+                        <span
+                          className="plus"
+                          onClick={() =>
+                            toggleCartItemQuanitity(item._id, "inc")
+                          }
+                        >
                           <AiOutlinePlus />
                         </span>
                       </p>
