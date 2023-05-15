@@ -59,10 +59,6 @@ const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className="product" key={item._id}>
-                {/* <img  
-                  src={urlFor(item.image[0])}
-                  className="cart-product-image"
-                /> */}
                 {item.image && item.image[0] ? (
                   <img
                     src={urlFor(item.image[0])}
