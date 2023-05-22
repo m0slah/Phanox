@@ -13,6 +13,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { toast } from "react-hot-toast";
 import { urlFor } from "Lib/client";
 import Link from "next/link";
+import getStripe from "Lib/getStripe";
 
 const Cart = () => {
   const cartRef = useRef(0);
@@ -22,8 +23,36 @@ const Cart = () => {
     cartItems,
     setShowCart,
     toggleCartItemQuanitity,
-    onRemove
+    onRemove,
   } = useStateContext();
+
+  const handleCheckout = async () => {
+    try {
+      const stripe = await getStripe();
+  
+      const response = await fetch("/api/stripe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cartItems),
+      });
+  
+      if (response.status === 500) {
+        return;
+      }
+  
+      const data = await response.json();
+  
+      toast.loading("Redirecting...");
+  
+      stripe.redirectToCheckout({ sessionId: data.id });
+    } catch (error) {
+      // Handle any potential errors here
+      console.error(error);
+    }
+  };
+  
 
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -100,7 +129,11 @@ const Cart = () => {
                         </span>
                       </p>
                     </div>
-                    <button type="button" className="remove-item" onClick={()=>onRemove(item)}>
+                    <button
+                      type="button"
+                      className="remove-item"
+                      onClick={() => onRemove(item)}
+                    >
                       <TiDeleteOutline />
                     </button>
                   </div>
@@ -116,7 +149,7 @@ const Cart = () => {
                 <h3>${totalPrice}</h3>
               </div>
               <div className="btn-container">
-                <button type="button" className="btn" onClick="">
+                <button type="button" className="btn" onClick={handleCheckout}>
                   Pay with Stripe
                 </button>
               </div>
