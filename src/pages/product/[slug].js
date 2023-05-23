@@ -14,7 +14,7 @@ const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
   const { qty, incQty, decQty, onAdd, setShowCart } = useStateContext();
-  
+
   const handleBuyNow = () => {
     onAdd(product, qty);
 
