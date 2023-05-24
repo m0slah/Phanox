@@ -4,7 +4,7 @@ import Head from "next/head";
 import Navber from "./Navber";
 import Footer from "./Footer";
 
-function Layout({children}) {
+function Layout({ children }) {
   return (
     <div className="layout">
       <Head>
@@ -21,4 +21,4 @@ function Layout({children}) {
   );
 }
 
-export default Layout;
+export default React.memo(Layout);
