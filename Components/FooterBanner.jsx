@@ -40,4 +40,4 @@ const FooterBanner = ({
   );
 };
 
-export default FooterBanner;
+export default React.memo(FooterBanner);
