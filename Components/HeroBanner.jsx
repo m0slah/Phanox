@@ -30,4 +30,4 @@ function HeroBanner({ heroBanner }) {
   );
 }
 
-export default HeroBanner;
+export default React.memo(HeroBanner);
