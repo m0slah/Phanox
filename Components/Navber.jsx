@@ -12,20 +12,23 @@ const Navber = () => {
 
   return (
     <div className="navbar-container">
-      <p className="logo">
-        <Link href="/">JSM HeadPhones</Link>
-      </p>
+      <React.Fragment>
+        <p className="logo">
+          <Link href="/">JSM HeadPhones</Link>
+        </p>
 
-      <button
-        type="button"
-        className="cart-icon"
-        onClick={() => setShowCart(true)}
-      >
-        <AiOutlineShoppingCart />
-        <span className="cart-item-qty">{totalQuantities}</span>
-      </button>
+        <button
+          type="button"
+          className="cart-icon"
+          onClick={() => setShowCart(true)}
+        >
+          <AiOutlineShoppingCart />
+          <span className="cart-item-qty">{totalQuantities}</span>
+        </button>
 
-      {showCart && <Cart />}
+        {showCart && <Cart />}
+        
+      </React.Fragment>
     </div>
   );
 };
