@@ -27,10 +27,9 @@ const Navber = () => {
         </button>
 
         {showCart && <Cart />}
-        
       </React.Fragment>
     </div>
   );
 };
 
-export default Navber;
+export default React.memo(Navber);
