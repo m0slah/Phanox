@@ -23,6 +23,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.8.0",
+    "shortid": "^2.2.16",
     "stripe": "^11.17.0"
   },
   "devDependencies": {

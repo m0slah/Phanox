@@ -6,7 +6,6 @@ import {
   AiOutlineMinus,
   AiOutlinePlus,
   AiOutlineLeft,
-  AiOutlineRight,
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import { HiOutlineShoppingBag } from "react-icons/hi";
